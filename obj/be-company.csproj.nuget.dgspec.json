@@ -1,25 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "E:\\be-company\\be-company.csproj": {}
+    "E:\\project thực tập cuối kì\\be-company\\be-company.csproj": {}
   },
   "projects": {
-    "E:\\be-company\\be-company.csproj": {
+    "E:\\project thực tập cuối kì\\be-company\\be-company.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\be-company\\be-company.csproj",
+        "projectUniqueName": "E:\\project thực tập cuối kì\\be-company\\be-company.csproj",
         "projectName": "be-company",
-        "projectPath": "E:\\be-company\\be-company.csproj",
-        "packagesPath": "C:\\Users\\NHAN\\.nuget\\packages\\",
-        "outputPath": "E:\\be-company\\obj\\",
+        "projectPath": "E:\\project thực tập cuối kì\\be-company\\be-company.csproj",
+        "packagesPath": "C:\\Users\\MyPC\\.nuget\\packages\\",
+        "outputPath": "E:\\project thực tập cuối kì\\be-company\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\NHAN\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\MyPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

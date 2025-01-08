@@ -1,16 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using be_company.Models;
 
-namespace be_company.Data  // Nếu bạn sử dụng thư mục Data
+namespace be_company.Data
 {
     public class AppDbContext : DbContext
     {
-        // Constructor mặc định nhận options để cấu hình DbContext
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 
-        // Các DbSet đại diện cho các bảng trong cơ sở dữ liệu
         public DbSet<EmployeeType> EmployeeTypes { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
@@ -48,7 +46,6 @@ namespace be_company.Data  // Nếu bạn sử dụng thư mục Data
                 .HasForeignKey<LeaveBalance>(l => l.EmployeeId);
             
             // Cấu hình các quan hệ khác cho các bảng còn lại
-            // modelBuilder.Entity<OtherEntity>().HasOne(...) ví dụ thêm mối quan hệ tương tự cho các bảng khác.
         }
     }
 }
