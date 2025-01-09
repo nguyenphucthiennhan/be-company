@@ -1,20 +1,20 @@
 using Microsoft.EntityFrameworkCore;
-using be_company.Data;  // Đảm bảo khai báo đúng namespace của AppDbContext
+using be_company.Data;  // Ensure this namespace is correct for your AppDbContext
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Cấu hình CORS để cho phép yêu cầu từ React
+// CORS configuration
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", builder =>
     {
-        builder.WithOrigins("http://localhost:3000")  // Địa chỉ của React App
+        builder.WithOrigins("http://localhost:3000")  // Your React App origin
                .AllowAnyMethod()
                .AllowAnyHeader();
     });
 });
 
-// Cấu hình DbContext
+// DbContext configuration
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -22,17 +22,16 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+// Middleware configuration
 app.UseHttpsRedirection();
 app.UseRouting();
 
-// Áp dụng chính sách CORS
+// Apply CORS policy
 app.UseCors("AllowReactApp");
 
 app.UseAuthorization();
 
-// Cấu hình các route controller
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+// Configure controllers
+app.MapControllers();  // This will handle attribute-based routing for API controllers
 
 app.Run();

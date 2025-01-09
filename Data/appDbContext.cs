@@ -28,24 +28,65 @@ namespace be_company.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Định nghĩa các quan hệ (Foreign Keys) nếu không được tự động phát hiện
+            // Employee-Department relationship
             modelBuilder.Entity<Employee>()
                 .HasOne(e => e.Department)
                 .WithMany()
                 .HasForeignKey(e => e.DepartmentID);
 
+            // Employee-EmployeeType relationship
             modelBuilder.Entity<Employee>()
                 .HasOne(e => e.EmployeeType)
                 .WithMany()
                 .HasForeignKey(e => e.TypeID);
 
-            // Định nghĩa các quan hệ foreign key cho các entity còn lại
+            // LeaveBalance-Employee relationship (One-to-One)
             modelBuilder.Entity<LeaveBalance>()
                 .HasOne(l => l.Employee)
                 .WithOne()
                 .HasForeignKey<LeaveBalance>(l => l.EmployeeId);
-            
-            // Cấu hình các quan hệ khác cho các bảng còn lại
+
+            // ProjectDetail-Client relationship
+            modelBuilder.Entity<ProjectDetail>()
+                .HasOne(pd => pd.Client)
+                .WithMany()  // Client can have many ProjectDetails
+                .HasForeignKey(pd => pd.ClientID);
+
+            // ProjectDetail-Project relationship
+            modelBuilder.Entity<ProjectDetail>()
+                .HasOne(pd => pd.Project)
+                .WithMany()  // Project can have many ProjectDetails
+                .HasForeignKey(pd => pd.ProjectId);
+
+            // EmployeeProject-Project relationship
+            modelBuilder.Entity<EmployeeProject>()
+                .HasOne(ep => ep.Project)
+                .WithMany()  // Project can have many EmployeeProjects
+                .HasForeignKey(ep => ep.ProjectId);
+
+            // EmployeeProject-Employee relationship
+            modelBuilder.Entity<EmployeeProject>()
+                .HasOne(ep => ep.Employee)
+                .WithMany()  // Employee can have many EmployeeProjects
+                .HasForeignKey(ep => ep.EmployeeId);
+
+            // Insurance-Employee relationship
+            modelBuilder.Entity<Insurance>()
+                .HasOne(i => i.Employee)
+                .WithMany()  // Employee can have many Insurances
+                .HasForeignKey(i => i.EmployeeID);
+
+            // Leave-Employee relationship
+            modelBuilder.Entity<Leave>()
+                .HasOne(l => l.Employee)
+                .WithMany()  // Employee can have many Leaves
+                .HasForeignKey(l => l.EmployeeID);
+
+            // User-Employee relationship
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Employee)
+                .WithMany()  // Employee can have many Users
+                .HasForeignKey(u => u.EmployeeId);
         }
     }
 }
